@@ -594,7 +594,9 @@ class EnginePlatformDispatcher extends ui.PlatformDispatcher {
             // TODO(web): Stop setting the color from here, https://github.com/flutter/flutter/issues/123365
             final int primaryColor =
                 arguments['primaryColor'] as int? ?? 0xFF000000;
-            domDocument.title = label;
+            if (label.isNotEmpty) {
+              domDocument.title = label;
+            }
             setThemeColor(ui.Color(primaryColor));
             replyToPlatformMessage(
                 callback, jsonCodec.encodeSuccessEnvelope(true));
